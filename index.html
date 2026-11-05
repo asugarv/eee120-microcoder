@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header class="title-banner">
+    <h1>EEE120 MicroCoder</h1>
+    <img src="ASU_logo.png" alt="Arizona State University logo">
+  </header>
   <main class="app" aria-label="EEE120 MicroCoder">
     <section class="left-column">
       <div class="diagram agu">
@@ -21,6 +25,7 @@
       <div class="diagram iims">
         <img src="120_IIMS1.jpg" alt="Instruction and input memory system logic diagram">
         <div class="iims-controls">
+          <div class="section-label">Controller Setup</div>
           <label><input id="loadIR" type="checkbox"> Load IR from Data Bus: <output id="irSource">SRAM</output></label>
           <label class="next-step">Next Step:
             <select id="nextStep"><option value="0">00</option><option value="1">01</option><option value="2">10</option><option value="3">11</option></select>
@@ -32,6 +37,7 @@
     <section class="right-column">
       <div class="diagram alu">
         <img src="120_ALU1.jpg" alt="Arithmetic logic unit logic diagram">
+        <div class="alu-setup-label section-label">ALU Setup</div>
         <div class="alu-controls">
           <label class="load-acc"><input id="loadACC" type="checkbox"> Load ACC with result of:</label>
           <select id="operation" aria-label="Accumulator operation">
@@ -56,6 +62,7 @@
       </div>
 
       <div class="microcode">
+        <div class="section-label microcode-label">ROM Microcode Word</div>
         <img src="120_Microcode1.jpg" alt="Microcode output header">
         <div class="binary-values" aria-label="Microcode binary values">
           <output id="bits3">0 0 0 0</output>
