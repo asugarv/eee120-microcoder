@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EEE120 MicroCoder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app" aria-label="EEE120 MicroCoder">
+    <section class="left-column">
+      <div class="diagram agu">
+        <img src="120_AGU1.jpg" alt="Address generation unit logic diagram">
+        <div class="address-controls">
+          <div class="section-label">SRAM Address Source</div>
+          <label><input type="radio" name="addressSource" value="pc" checked> Use PC and Increment</label>
+          <label><input type="radio" name="addressSource" value="mar"> Use MAR</label>
+          <label class="check-row"><input id="loadMAR" type="checkbox"> Load MAR from Data Bus: <output id="marSource">SRAM</output></label>
+        </div>
+      </div>
+      <div class="diagram iims">
+        <img src="120_IIMS1.jpg" alt="Instruction and input memory system logic diagram">
+        <div class="iims-controls">
+          <label><input id="loadIR" type="checkbox"> Load IR from Data Bus: <output id="irSource">SRAM</output></label>
+          <label class="next-step">Next Step:
+            <select id="nextStep"><option value="0">00</option><option value="1">01</option><option value="2">10</option><option value="3">11</option></select>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="right-column">
+      <div class="diagram alu">
+        <img src="120_ALU1.jpg" alt="Arithmetic logic unit logic diagram">
+        <div class="alu-controls">
+          <label class="load-acc"><input id="loadACC" type="checkbox"> Load ACC with result of:</label>
+          <select id="operation" aria-label="Accumulator operation">
+            <option value="0">NOP</option>
+            <option value="1">AND (ACC &amp; Data Bus)</option>
+            <option value="2">PASS (Data Bus)</option>
+            <option value="3">AND (ACC &amp; NOT(Data Bus))</option>
+            <option value="4">PASS (NOT(Data Bus))</option>
+            <option value="5">ADD (ACC + Data Bus)</option>
+            <option value="6">PASS (Data Bus)</option>
+            <option value="7">SUB (ACC - Data Bus)</option>
+            <option value="8">2's COMP (Data Bus)</option>
+          </select>
+          <label class="db-source-label">Data Bus Source:</label>
+          <select id="dataSource" aria-label="Data bus source">
+            <option value="0">Data In</option>
+            <option value="1" selected>SRAM</option>
+            <option value="2">ACC</option>
+          </select>
+          <label class="load-sram"><input id="loadSRAM" type="checkbox"> Write SRAM from Data Bus: <output id="sramSource">SRAM</output></label>
+        </div>
+      </div>
+
+      <div class="microcode">
+        <img src="120_Microcode1.jpg" alt="Microcode output header">
+        <div class="binary-values" aria-label="Microcode binary values">
+          <output id="bits3">0 0 0 0</output>
+          <output id="bits2">0 0 0 0</output>
+          <output id="bits1">0 0 0 0</output>
+          <output id="bits0">0 0 0 0</output>
+        </div>
+        <div class="hex-values" aria-label="Microcode hexadecimal values">
+          <output id="hex3">0</output>
+          <output id="hex2">0</output>
+          <output id="hex1">0</output>
+          <output id="hex0">0</output>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
